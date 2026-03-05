@@ -135,6 +135,74 @@
             border-radius: 99px;
         }
 
+        /* ===== SCROLL REVEAL ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-32px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(32px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.93);
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        /* Staggered children */
+        .stagger > *:nth-child(1) { transition-delay: 0s; }
+        .stagger > *:nth-child(2) { transition-delay: 0.1s; }
+        .stagger > *:nth-child(3) { transition-delay: 0.2s; }
+        .stagger > *:nth-child(4) { transition-delay: 0.3s; }
+        .stagger > *:nth-child(5) { transition-delay: 0.4s; }
+        .stagger > *:nth-child(6) { transition-delay: 0.5s; }
+
+        /* ===== HERO IMAGE MOBILE FIX ===== */
+        @media (max-width: 768px) {
+            .hero-img-container {
+                height: 100svh !important;
+                min-height: 100vh;
+            }
+            .hero-img-container img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+                object-position: center top !important;
+            }
+        }
+
+        /* Scroll indicator bounce */
+        @keyframes bounceY {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(5px); }
+        }
+        .scroll-bounce {
+            animation: bounceY 1.6s ease-in-out infinite;
+        }
+
         /* Tag Pill for Block 2 */
         .tag {
             display: inline-flex;
@@ -340,7 +408,7 @@
               <div className="relative flex flex-col bg-sand pb-12">
                 
                 {/* Photo Container - Full Width with U-Shape */}
-                <div className="relative w-full h-[175vh] overflow-hidden hero-arch-bottom shadow-2xl shadow-stone-200/50 bg-sand">
+                <div className="hero-img-container relative w-full h-[175vh] overflow-hidden hero-arch-bottom shadow-2xl shadow-stone-200/50 bg-sand">
                   <img 
                     src="hero.png" 
                     alt="Nutricionista Guilherme Meneguz" 
@@ -377,8 +445,16 @@
 
                 {/* Scroll Indicator - Oval Button */}
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
-                  <div className="w-10 h-14 bg-[#E8E0D0] border-2 border-white rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:bg-white transition-colors duration-300">
-                    <ArrowDown size={18} className="text-muted-claude opacity-70" />
+                  <div 
+                    className="w-10 h-14 bg-[#E8E0D0] border-2 border-white rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:bg-white transition-colors duration-300"
+                    onClick={() => {
+                      const sections = document.querySelectorAll('section');
+                      if (sections.length > 0) {
+                        sections[0].scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                  >
+                    <ArrowDown size={18} className="text-muted-claude opacity-70 scroll-bounce" />
                   </div>
                 </div>
 
@@ -588,7 +664,12 @@
                       </div>
                       <h4 className="text-2xl font-dm-serif text-ink mb-3">{item.title}</h4>
                       <p className="text-muted-claude text-base leading-relaxed mb-8 flex-1 font-dm-sans">{item.desc}</p>
-                      <span className="self-start px-7 py-3 bg-accent-claude text-white text-base font-bold rounded-full shadow-lg shadow-accent-claude/20 font-dm-sans">{item.badge}</span>
+                      <a 
+                        href="https://wa.me/5527996381603" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="self-start px-7 py-3 bg-accent-claude text-white text-base font-bold rounded-full shadow-lg shadow-accent-claude/20 font-dm-sans hover:bg-accent-claude/90 transition-colors duration-200"
+                      >{item.badge}</a>
                     </div>
                   ))}
                 </div>
@@ -624,7 +705,12 @@
                       <li className="flex gap-3 text-base text-stone-400 line-through"><Video size={20} className="shrink-0"/> Videochamada</li>
                       <li className="flex gap-3 text-base text-stone-400 line-through"><Zap size={20} className="shrink-0"/> Acesso ao App</li>
                     </ul>
-                  </div>
+                    <a 
+                      href="https://wa.me/5527996381603?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Basic!" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="block w-full text-center py-3 bg-plan-basic text-white font-bold rounded-2xl mt-auto hover:opacity-90 transition-opacity duration-200 font-dm-sans"
+                    >Contratar Basic</a>
 
                   {/* Standard Plan (Featured) */}
                   <div className="bg-white rounded-[2rem] p-8 border-2 border-plan-standard shadow-2xl relative transform md:-translate-y-4 flex flex-col h-full z-10">
@@ -647,6 +733,12 @@
                       <li className="flex gap-3 text-base text-stone-800 font-medium"><CheckCircle2 size={20} className="text-plan-standard shrink-0"/> Análise de Progresso Semanal</li>
                       <li className="flex gap-3 text-base text-stone-800 font-medium"><CheckCircle2 size={20} className="text-plan-standard shrink-0"/> 3 ajustes/mês</li>
                     </ul>
+                    <a 
+                      href="https://wa.me/5527996381603?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Standard!" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="block w-full text-center py-3 bg-plan-standard text-white font-bold rounded-2xl mt-auto hover:opacity-90 transition-opacity duration-200 font-dm-sans shadow-lg shadow-plan-standard/20"
+                    >Contratar Standard</a>
                   </div>
 
                   {/* Premium Plan */}
@@ -666,6 +758,12 @@
                       <li className="flex gap-3 text-base text-stone-800 font-medium"><CheckCircle2 size={20} className="text-plan-premium shrink-0"/> Avaliação com Adipômetro</li>
                       <li className="flex gap-3 text-base text-stone-800 font-medium"><CheckCircle2 size={20} className="text-plan-premium shrink-0"/> 5 ajustes/mês</li>
                     </ul>
+                    <a 
+                      href="https://wa.me/5527996381603?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Premium!" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="block w-full text-center py-3 bg-plan-premium text-white font-bold rounded-2xl mt-auto hover:opacity-90 transition-opacity duration-200 font-dm-sans"
+                    >Contratar Premium</a>
                   </div>
 
                 </div>
@@ -793,9 +891,15 @@
                         <span className="text-stone-400 text-sm font-dm-sans">/mês</span>
                       </div>
                       <div className="w-8 h-0.5 bg-accent mx-auto mb-4 rounded-full"></div>
-                      <p className="text-stone-500 text-sm font-dm-sans leading-relaxed">
+                      <p className="text-stone-500 text-sm font-dm-sans leading-relaxed mb-6">
                         Adicione ao seu plano de nutrição e tenha treino e alimentação caminhando juntos.
                       </p>
+                      <a 
+                        href="https://wa.me/5527996381603?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20Consultoria%20de%20Treino!" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="block w-full py-3 bg-accent text-white font-bold rounded-2xl hover:opacity-90 transition-opacity duration-200 font-dm-sans text-sm"
+                      >Adicionar ao Plano</a>
                     </div>
                   </div>
                 </div>
@@ -849,7 +953,13 @@
                            <span className="text-xs font-bold text-stone-500 uppercase tracking-[0.3em] mb-4 block">Investimento Único</span>
                            <div className="text-5xl font-serif font-bold text-stone-900 mb-2">R$ 120</div>
                            <div className="w-12 h-1 bg-accent mx-auto mb-6 rounded-full"></div>
-                           <p className="text-stone-500 text-xs">Sem compromisso de mensalidade.</p>
+                           <p className="text-stone-500 text-xs mb-6">Sem compromisso de mensalidade.</p>
+                           <a 
+                             href="https://wa.me/5527996381603?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20Avalia%C3%A7%C3%A3o%20Antropom%C3%A9trica!" 
+                             target="_blank" 
+                             rel="noopener noreferrer"
+                             className="block w-full py-3 bg-accent text-white font-bold rounded-2xl hover:opacity-90 transition-opacity duration-200 font-dm-sans text-sm"
+                           >Agendar Avaliação</a>
                         </div>
                     </div>
                 </div>
@@ -881,9 +991,14 @@
                   ))}
                 </div>
                 <div className="mt-16 text-center relative z-10">
-                  <span className="inline-block px-8 py-3 rounded-full border border-stone-700 text-stone-300 font-semibold bg-stone-800/50 text-sm tracking-wide uppercase">
+                  <a 
+                    href="https://wa.me/5527996381603?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20Nutri%C3%A7%C3%A3o%20para%20Esportes%20de%20Combate!"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-8 py-3 rounded-full border border-stone-700 text-stone-300 font-semibold bg-stone-800/50 text-sm tracking-wide uppercase hover:bg-stone-700/50 hover:border-stone-500 transition-all duration-300"
+                  >
                     Valores sob consulta
-                  </span>
+                  </a>
                 </div>
               </Section>
 
@@ -914,9 +1029,14 @@
                   ))}
                 </div>
                 <div className="mt-16 text-center relative z-10">
-                  <span className="inline-block px-8 py-3 rounded-full border border-purple-800/50 text-purple-300 font-semibold bg-purple-900/20 text-sm tracking-wide uppercase shadow-lg">
+                  <a 
+                    href="https://wa.me/5527996381603?text=Ol%C3%A1%2C%20tenho%20interesse%20em%20Prepara%C3%A7%C3%A3o%20para%20Fisiculturismo!"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-8 py-3 rounded-full border border-purple-800/50 text-purple-300 font-semibold bg-purple-900/20 text-sm tracking-wide uppercase shadow-lg hover:bg-purple-900/40 hover:border-purple-700/50 transition-all duration-300"
+                  >
                     Valores sob consulta
-                  </span>
+                  </a>
                 </div>
               </Section>
               
@@ -963,6 +1083,54 @@
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
+    </script>
+
+    <!-- Scroll Reveal Observer -->
+    <script>
+        function initScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+            // Observe sections and key elements
+            const selectors = [
+                'section',
+                '.card-hover',
+                '[data-reveal]',
+            ];
+
+            // Auto-apply reveal to major content blocks
+            document.querySelectorAll('section').forEach((el, i) => {
+                el.classList.add('reveal');
+                observer.observe(el);
+            });
+
+            document.querySelectorAll('.card-hover').forEach((el, i) => {
+                if (!el.closest('section') || true) {
+                    el.classList.add('reveal');
+                    el.style.transitionDelay = (i % 4) * 0.1 + 's';
+                    observer.observe(el);
+                }
+            });
+
+            // Observe grid children for staggered animation
+            document.querySelectorAll('.grid').forEach(grid => {
+                grid.classList.add('stagger');
+                Array.from(grid.children).forEach((child, i) => {
+                    child.classList.add('reveal');
+                    observer.observe(child);
+                });
+            });
+        }
+
+        // Run after React renders
+        setTimeout(initScrollReveal, 600);
+        // Also re-run on any mutation (React may re-render)
+        window.addEventListener('load', () => setTimeout(initScrollReveal, 800));
     </script>
 </body>
 </html>
