@@ -40,15 +40,20 @@
     .hero-img-container img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
     .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,.3) 0%, transparent 45%, rgba(0,0,0,.6) 100%); pointer-events: none; }
     .hero-content { position: absolute; inset: 0; display: flex; flex-direction: column; padding: 2rem 2.5rem; z-index: 10; }
-    .hero-topbar { display: flex; justify-content: space-between; align-items: center; max-width: 72rem; width: 100%; margin: 0 auto; }
-    .hero-topbar span { font-size: .65rem; text-transform: uppercase; letter-spacing: .2em; color: rgba(255,255,255,.9); font-weight: 600; }
+    .hero-topbar { display: flex; justify-content: space-between; align-items: center; max-width: 72rem; width: 100%; margin: 0 auto; flex-wrap: nowrap; gap: .75rem; }
+    .hero-topbar span { font-size: .6rem; text-transform: uppercase; letter-spacing: .15em; color: rgba(255,255,255,.9); font-weight: 600; white-space: nowrap; }
     .hero-badge { border: 1px solid rgba(255,255,255,.3); padding: .25rem .75rem; border-radius: 9999px; backdrop-filter: blur(4px); }
     .hero-title-block { text-align: center; margin-top: 2.5rem; }
     .hero-name { font-family: 'Playfair Display', ui-serif, Georgia, serif; font-style: italic; font-size: clamp(1.5rem, 5vw, 4.5rem); color: #fff; line-height: 1.2; text-shadow: 0 2px 12px rgba(0,0,0,.3); }
     .hero-sub { font-size: .7rem; text-transform: uppercase; letter-spacing: .3em; color: rgba(255,255,255,.9); font-weight: 600; margin-top: .25rem; }
+    .hero-ctas { display: flex; gap: .75rem; justify-content: center; margin-top: 2rem; flex-wrap: nowrap; }
+    .hero-cta-primary { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; background: #f76f53; color: #fff; border-radius: 9999px; font-weight: 600; font-size: .875rem; white-space: nowrap; box-shadow: 0 4px 20px rgba(247,111,83,.4); transition: background .25s, transform .2s; }
+    .hero-cta-primary:hover { background: #e85e42; transform: translateY(-1px); }
+    .hero-cta-secondary { display: inline-flex; align-items: center; gap: .5rem; padding: .75rem 1.5rem; background: rgba(255,255,255,.15); color: #fff; border: 1.5px solid rgba(255,255,255,.5); border-radius: 9999px; font-weight: 600; font-size: .875rem; white-space: nowrap; backdrop-filter: blur(6px); transition: background .25s, transform .2s; }
+    .hero-cta-secondary:hover { background: rgba(255,255,255,.28); transform: translateY(-1px); }
     .scroll-btn { position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); z-index: 20; }
-    .scroll-btn button { width: 2.5rem; height: 3.5rem; background: var(--sand); border: 2px solid #fff; border-radius: 9999px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,.15); cursor: pointer; transition: background .3s; }
-    .scroll-btn button:hover { background: #fff; }
+    .scroll-btn button { width: 2.5rem; height: 3.5rem; background: #f76f53; border: 2px solid #fff; border-radius: 9999px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(247,111,83,.35); cursor: pointer; transition: background .3s; }
+    .scroll-btn button:hover { background: #e85e42; }
     .scroll-btn svg { animation: bounceY 1.6s ease-in-out infinite; }
     @keyframes bounceY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
 
@@ -90,22 +95,25 @@
 
     /* TECH */
     .tech-items { display: flex; flex-direction: column; gap: 6rem; margin-top: 2rem; }
-    .tech-row { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
-    @media (min-width: 768px) { .tech-row { flex-direction: row; gap: 5rem; } .tech-row.rev { flex-direction: row-reverse; } }
+    .tech-row { display: flex; flex-direction: row; align-items: center; gap: 1.5rem; }
+    .tech-row.rev { flex-direction: row-reverse; }
+    @media (min-width: 768px) { .tech-row { gap: 5rem; } }
     .tech-text { flex: 1; min-width: 0; }
     .tech-icon-box { width: 3.5rem; height: 3.5rem; border-radius: .75rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
     .tech-title { font-family: 'Playfair Display', ui-serif, Georgia, serif; font-size: clamp(1.5rem,3vw,2.5rem); font-weight: 500; color: #1c1917; margin-bottom: .75rem; }
     .tech-desc { color: #78716c; line-height: 1.7; font-size: .95rem; }
     .phones { flex: 1; display: flex; align-items: center; justify-content: center; }
     .phones-inner { display: flex; align-items: center; }
-    .phone { width: 100px; aspect-ratio: 9/19.5; border-radius: 16px; background: #aaa7a4; border: 1px solid #aaa7a4; overflow: hidden; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,.15); transition: transform .5s ease; flex-shrink: 0; }
-    @media (min-width: 640px) { .phone { width: 150px; } }
-    .phone:hover { transform: translateY(-8px); }
+    .phone { width: 130px; aspect-ratio: 9/19.5; border-radius: 16px; background: #aaa7a4; border: 1px solid #aaa7a4; overflow: hidden; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,.15); transition: transform .4s ease, box-shadow .4s ease; flex-shrink: 0; }
+    @media (min-width: 640px) { .phone { width: 185px; } }
+    .phone-a { z-index: 1; --base-y: -12px; transform: translateY(var(--base-y)); }
+    .phone-b { margin-left: -1.5rem; --base-y: 8px; transform: translateY(var(--base-y)); opacity: .9; z-index: 0; }
+    .phone-a:hover { --base-y: -22px; box-shadow: 0 20px 40px rgba(0,0,0,.2); }
+    .phone-b:hover { --base-y: -2px; box-shadow: 0 20px 40px rgba(0,0,0,.2); }
+    .phones > .phone:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,.2); }
     .phone-screen { position: absolute; inset: 1px; border-radius: 15px; overflow: hidden; background: #fff; }
     .phone-screen img { width: 100%; height: 100%; object-fit: cover; }
     .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 36px; height: 10px; border-radius: 0 0 8px 8px; background: #aaa7a4; z-index: 10; }
-    .phone-a { z-index: 1; transform: translateY(-12px); }
-    .phone-b { margin-left: -1.5rem; transform: translateY(8px); opacity: .9; z-index: 0; }
 
     /* VANTAGENS */
     .maps-btn { display: inline-flex; align-items: center; gap: .5rem; padding: .6rem 1.25rem; background: #fff; border: 1px solid var(--warm); border-radius: 9999px; color: var(--ink); font-size: .8rem; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,.07); transition: all .25s; cursor: pointer; text-decoration: none; }
@@ -114,9 +122,10 @@
     .vantagens-grid { display: grid; gap: 1.5rem; }
     @media (min-width: 768px) { .vantagens-grid { grid-template-columns: repeat(3,1fr); gap: 2rem; } }
     .vantagem-card { background: var(--cream); border: 1px solid var(--warm); padding: 2rem; display: flex; flex-direction: column; }
-    .vantagem-icon { width: 3.5rem; height: 3.5rem; background: rgba(200,98,42,.1); color: var(--accent2); border-radius: 1rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+    .vantagem-top-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }
+    .vantagem-icon { width: 3.5rem; height: 3.5rem; background: rgba(200,98,42,.1); color: var(--accent2); border-radius: 1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .vantagem-title { font-family: 'Playfair Display', ui-serif, Georgia, serif; font-size: 1.5rem; color: var(--ink); margin-bottom: .75rem; }
-    .vantagem-desc { color: var(--muted); font-size: .95rem; line-height: 1.7; flex: 1; margin-bottom: 1.5rem; }
+    .vantagem-desc { color: var(--muted); font-size: .95rem; line-height: 1.7; flex: 1; }
     .vantagem-badge { display: inline-block; align-self: flex-start; padding: .55rem 1.25rem; background: var(--accent2); color: #fff; font-weight: 700; border-radius: 9999px; font-size: .875rem; box-shadow: 0 4px 16px rgba(200,98,42,.2); }
 
     /* PLANOS */
@@ -235,8 +244,8 @@
     .footer-inner { position: relative; z-index: 10; max-width: 48rem; margin: 0 auto; }
     .footer-headline { font-family: 'Playfair Display', ui-serif, Georgia, serif; font-size: clamp(2.5rem,7vw,4.5rem); font-weight: 500; letter-spacing: -.02em; margin-bottom: 1.5rem; }
     .footer-sub { color: #78716c; font-size: 1.2rem; font-weight: 300; margin-bottom: 3rem; }
-    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
-    .footer-link { display: flex; align-items: center; gap: .75rem; padding: .75rem 1.5rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 9999px; box-shadow: 0 1px 4px rgba(0,0,0,.05); color: #44403c; font-weight: 500; font-size: .875rem; transition: all .3s; }
+    .footer-links { display: flex; flex-wrap: nowrap; justify-content: center; gap: 1rem; }
+    .footer-link { display: flex; align-items: center; gap: .75rem; padding: .75rem 1.25rem; background: #fff; border: 1px solid #e7e5e4; border-radius: 9999px; box-shadow: 0 1px 4px rgba(0,0,0,.05); color: #44403c; font-weight: 500; font-size: .875rem; transition: all .3s; white-space: nowrap; }
     .footer-link:hover { box-shadow: 0 4px 16px rgba(0,0,0,.1); border-color: rgba(247,111,83,.4); }
     .footer-link svg { color: var(--accent); }
 
@@ -246,9 +255,9 @@
     .btn-accent { background: var(--accent); box-shadow: 0 6px 20px rgba(247,111,83,.25); }
 
     /* SCROLL REVEAL */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .91s cubic-bezier(.22,1,.36,1), transform .91s cubic-bezier(.22,1,.36,1); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-    [data-d="1"]{ transition-delay:.05s } [data-d="2"]{ transition-delay:.12s } [data-d="3"]{ transition-delay:.19s } [data-d="4"]{ transition-delay:.26s }
+    [data-d="1"]{ transition-delay:.065s } [data-d="2"]{ transition-delay:.156s } [data-d="3"]{ transition-delay:.247s } [data-d="4"]{ transition-delay:.338s }
   </style>
 </head>
 <body>
@@ -268,12 +277,21 @@
       <div class="hero-title-block">
         <h1 class="hero-name">Guilherme Meneguz Duarte</h1>
         <p class="hero-sub">Nutricionista</p>
+        <div class="hero-ctas">
+          <a href="https://wa.me/5527996381603?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta!" target="_blank" rel="noopener noreferrer" class="hero-cta-primary">
+            Agendar Consulta
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="#planos" class="hero-cta-secondary">
+            Conhecer Planos
+          </a>
+        </div>
       </div>
     </div>
   </div>
   <div class="scroll-btn">
     <button id="scrollBtn" aria-label="Próxima seção">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B6355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
     </button>
   </div>
 </div>
@@ -295,19 +313,21 @@
     <div class="location-box reveal" data-d="2">
       <div class="location-row">
         <div class="location-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <div>
+        <div style="flex:1;min-width:0">
           <p class="location-title">Atendimento Presencial</p>
-          <p class="location-addr">Edifício Alphaville Trade Center - Praça San Martin, 84 - sala 705 - Praia do Canto, Vitória</p>
-          <a
-            href="https://www.google.com/maps/dir/?api=1&destination=Pra%C3%A7a+San+Martin+84+Praia+do+Canto+Vit%C3%B3ria+ES"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="maps-btn"
-            style="margin-top:.75rem"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-            Veja como chegar
-          </a>
+          <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.25rem">
+            <p class="location-addr" style="flex:1;min-width:0;margin-top:0">Edifício Alphaville Trade Center - Praça San Martin, 84 - sala 705 - Praia do Canto, Vitória</p>
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=Pra%C3%A7a+San+Martin+84+Praia+do+Canto+Vit%C3%B3ria+ES"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="maps-btn"
+              style="flex-shrink:0"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+              Como chegar
+            </a>
+          </div>
         </div>
       </div>
       <div class="photos-row">
@@ -378,29 +398,35 @@
     <div class="sh reveal"><h2>Vantagens Exclusivas</h2><div class="divider-clay"></div></div>
     <div class="vantagens-grid">
       <div class="vantagem-card card reveal" data-d="1">
-        <div class="vantagem-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="vantagem-top-row">
+          <div class="vantagem-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <span class="vantagem-badge">10% OFF</span>
+        </div>
         <h4 class="vantagem-title">Plano para Duplas</h4>
         <p class="vantagem-desc">Treinar junto dá resultado. Feche o pacote com alguém e ambos ganham desconto.</p>
-        <span class="vantagem-badge">10% OFF</span>
       </div>
       <div class="vantagem-card card reveal" data-d="2">
-        <div class="vantagem-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg></div>
+        <div class="vantagem-top-row">
+          <div class="vantagem-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg></div>
+          <span class="vantagem-badge">10% OFF</span>
+        </div>
         <h4 class="vantagem-title">Indique e Ganhe</h4>
         <p class="vantagem-desc">Sua recomendação vale muito. Indique um amigo e ganhe desconto na renovação.</p>
-        <span class="vantagem-badge">10% OFF</span>
       </div>
       <div class="vantagem-card card reveal" data-d="3">
-        <div class="vantagem-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 4-4"/><path d="m2 6 4-4"/><path d="m3 10 7-7"/><path d="m14 21 7-7"/></svg></div>
+        <div class="vantagem-top-row">
+          <div class="vantagem-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 4-4"/><path d="m2 6 4-4"/><path d="m3 10 7-7"/><path d="m14 21 7-7"/></svg></div>
+          <span class="vantagem-badge">+ R$ 99/mês</span>
+        </div>
         <h4 class="vantagem-title">Consultoria de Treino</h4>
         <p class="vantagem-desc">Adicione treino personalizado e acompanhamento com personal trainer ao seu pacote. Treino no app e suporte para dúvidas.</p>
-        <span class="vantagem-badge">+ R$ 99/mês</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- PLANOS -->
-<section style="background:#fff">
+<section id="planos" style="background:#fff">
   <div class="si">
     <div class="sh reveal"><h2>Escolha seu Plano</h2><p>Opções flexíveis para diferentes níveis de acompanhamento</p><div class="divider-accent"></div></div>
     <div class="plans-grid">
@@ -457,28 +483,34 @@
       <p class="pkgs-desc">Para um melhor acompanhamento eu indico <strong>os pacotes</strong>, porque assim nós conseguimos medir melhor nossa evolução com as consultas futuras já garantidas.</p>
       <div class="pkgs-wrap">
         <table class="pkgs-table">
+          <colgroup>
+            <col style="width:12%">
+            <col style="width:29.3%">
+            <col style="width:29.3%">
+            <col style="width:29.3%">
+          </colgroup>
           <thead><tr>
-            <th></th>
+            <th><span style="font-family:'Inter',sans-serif;font-size:.6rem;font-weight:600;color:#a8a29e;text-transform:uppercase;letter-spacing:.04em">Nº de Consulta</span></th>
             <th><span class="tb tb-b">Basic</span><br><span style="font-family:'Inter',sans-serif;font-size:.65rem;font-weight:500;color:#a8a29e;text-transform:none;letter-spacing:0">Online</span></th>
             <th style="background:rgba(250,250,249,.5)"><span class="tb tb-s">Standard</span><br><span style="font-family:'Inter',sans-serif;font-size:.65rem;font-weight:500;color:#a8a29e;text-transform:none;letter-spacing:0">Online</span></th>
             <th><span class="tb tb-p">Premium</span><br><span style="font-family:'Inter',sans-serif;font-size:.65rem;font-weight:500;color:#a8a29e;text-transform:none;letter-spacing:0">Presencial</span></th>
           </tr></thead>
           <tbody>
-            <tr><td class="td-lbl">Consulta Avulsa</td><td class="td-big">R$ 199</td><td class="td-big" style="background:rgba(250,250,249,.3)">R$ 289</td><td class="td-big">R$ 329</td></tr>
+            <tr><td class="td-lbl">1</td><td class="td-big">R$ 199</td><td class="td-big" style="background:rgba(250,250,249,.3)">R$ 289</td><td class="td-big">R$ 329</td></tr>
             <tr>
-              <td class="td-lbl">2 Consultas</td>
+              <td class="td-lbl">2</td>
               <td><span class="td-dash"></span></td>
               <td style="background:rgba(250,250,249,.3)"><div class="pkg-col"><div><span class="pkg-orig">R$ 578</span><span class="pkg-disc">-21%</span></div><div class="pkg-price">R$ 459</div><div class="pkg-per">R$ 229/consulta</div><div class="pkg-save">Economize R$ 119</div></div></td>
               <td><div class="pkg-col"><div><span class="pkg-orig">R$ 658</span><span class="pkg-disc">-20%</span></div><div class="pkg-price">R$ 529</div><div class="pkg-per">R$ 264/consulta</div><div class="pkg-save">Economize R$ 129</div></div></td>
             </tr>
             <tr>
-              <td class="td-lbl">3 Consultas</td>
+              <td class="td-lbl">3</td>
               <td><span class="td-dash"></span></td>
               <td style="background:rgba(250,250,249,.3)"><div class="pkg-col"><div><span class="pkg-orig">R$ 867</span><span class="pkg-disc">-24%</span></div><div class="pkg-price">R$ 659</div><div class="pkg-per">R$ 219/consulta</div><div class="pkg-save">Economize R$ 208</div></div></td>
               <td><div class="pkg-col"><div><span class="pkg-orig">R$ 987</span><span class="pkg-disc">-24%</span></div><div class="pkg-price">R$ 749</div><div class="pkg-per">R$ 249/consulta</div><div class="pkg-save">Economize R$ 238</div></div></td>
             </tr>
             <tr>
-              <td class="td-lbl">4 Consultas</td>
+              <td class="td-lbl">4</td>
               <td><span class="td-dash"></span></td>
               <td style="background:rgba(250,250,249,.3)"><div class="pkg-col"><div><span class="pkg-orig">R$ 1.156</span><span class="pkg-disc">-27%</span></div><div class="pkg-price">R$ 849</div><div class="pkg-per">R$ 212/consulta</div><div class="pkg-save">Economize R$ 307</div></div></td>
               <td><div class="pkg-col"><div><span class="pkg-orig">R$ 1.316</span><span class="pkg-disc">-26%</span></div><div class="pkg-price">R$ 979</div><div class="pkg-per">R$ 244/consulta</div><div class="pkg-save">Economize R$ 337</div></div></td>
