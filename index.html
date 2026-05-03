@@ -815,9 +815,12 @@
     <div class="hero-content">
       <div class="hero-topbar">
         <div class="hero-topbar-left">
+          <div class="hero-logo-mark">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+          </div>
           <span>Nutrição de alta performance</span>
         </div>
-        <span style="font-size:.6rem;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.85);font-weight:500">CRN 23100258</span>
+        <span class="hero-badge">CRN 23100258</span>
       </div>
       <div class="hero-title-block">
         <div class="hero-eyebrow">Nutricionista</div>
@@ -873,7 +876,7 @@
         <div class="photo-box"><img src="consultorio.png" alt="Consultório 1" /></div>
         <div class="photo-box"><img src="consultorio2.png" alt="Consultório 2" /></div>
       </div>
-      <p class="note-box">*Remarcações com 24h de antecedência.</p>
+      <p class="note-box">*Remarcações com 24h de antecedência. Caso contrário, será aplicada uma taxa de R$ 30.</p>
     </div>
   </div>
 </section>
@@ -971,7 +974,7 @@
       <div class="vantagem-card card reveal" data-d="3">
         <div class="vantagem-top-row">
           <div class="vantagem-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 4-4"/><path d="m2 6 4-4"/><path d="m3 10 7-7"/><path d="m14 21 7-7"/></svg></div>
-          <span class="vantagem-badge">Adicional</span>
+          <span class="vantagem-badge">+ R$ 99/mês</span>
         </div>
         <h4 class="vantagem-title">Consultoria de Treino</h4>
         <p class="vantagem-desc">Adicione treino personalizado e acompanhamento com personal trainer ao seu pacote. Treino no app e suporte para dúvidas.</p>
@@ -996,7 +999,7 @@
       <div class="plan-card plan-basic card reveal" data-d="1">
         <div class="plan-name n-basic">Basic</div>
         <p class="plan-desc">Para quem tem disciplina e precisa de um direcionamento inicial.</p>
-
+        <div class="plan-price">R$ 199<span>/consulta avulsa</span></div>
         <ul class="plan-features">
           <li style="font-weight:600"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Online</li>
           <li class="divider-line"></li>
@@ -1014,7 +1017,7 @@
         <div class="plan-pop-badge"><span>Mais Popular</span></div>
         <div class="plan-name n-std" style="padding-top:.5rem">Standard</div>
         <p class="plan-desc">O equilíbrio perfeito entre autonomia e acompanhamento próximo.</p>
-
+        <div class="plan-price">R$ 289<span>/consulta avulsa</span></div>
         <ul class="plan-features">
           <li style="font-weight:600"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4553A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>Videochamada</li>
           <li class="divider-line"></li>
@@ -1028,7 +1031,7 @@
       <div class="plan-card plan-prem card reveal" data-d="3">
         <div class="plan-name n-prem">Premium</div>
         <p class="plan-desc">Experiência completa presencial com avaliação técnica detalhada.</p>
-
+        <div class="plan-price">R$ 329<span>/consulta avulsa</span></div>
         <ul class="plan-features">
           <li style="font-weight:600"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Presencial</li>
           <li class="divider-line"></li>
@@ -1040,7 +1043,49 @@
       </div>
     </div>
 
-
+    <!-- Pacotes -->
+    <div class="pkgs reveal">
+      <h3 class="pkgs-title">Pacotes de Evolução</h3>
+      <p class="pkgs-desc">Para um melhor acompanhamento eu indico <strong>os pacotes</strong>, porque assim nós conseguimos medir melhor nossa evolução com as consultas futuras já garantidas.</p>
+      <div class="pkgs-wrap">
+        <table class="pkgs-table">
+          <colgroup>
+            <col style="width:12%">
+            <col style="width:29.3%">
+            <col style="width:29.3%">
+            <col style="width:29.3%">
+          </colgroup>
+          <thead><tr>
+            <th style="white-space:normal;width:1%"><span style="font-family:'DM Sans',sans-serif;font-size:.58rem;font-weight:500;color:#a8a29e;text-transform:uppercase;letter-spacing:.06em;display:block;text-align:center;line-height:1.4">Nº de<br>Consultas</span></th>
+            <th><span class="tb tb-b">Basic</span><br><span style="font-family:'DM Sans',sans-serif;font-size:.62rem;font-weight:400;color:#a8a29e">Online</span></th>
+            <th style="background:rgba(250,250,249,.4)"><span class="tb tb-s">Standard</span><br><span style="font-family:'DM Sans',sans-serif;font-size:.62rem;font-weight:400;color:#a8a29e">Online</span></th>
+            <th><span class="tb tb-p">Premium</span><br><span style="font-family:'DM Sans',sans-serif;font-size:.62rem;font-weight:400;color:#a8a29e">Presencial</span></th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="td-lbl">1</td><td class="td-big">R$ 199</td><td class="td-big" style="background:rgba(250,250,249,.3)">R$ 289</td><td class="td-big">R$ 329</td></tr>
+            <tr>
+              <td class="td-lbl">2</td>
+              <td><span class="td-dash"></span></td>
+              <td style="background:rgba(250,250,249,.3)"><div class="pkg-col"><div class="pkg-orig-row"><span class="pkg-orig">R$ 578</span><span class="pkg-disc">-21%</span></div><div class="pkg-price">R$ 459</div><div class="pkg-per">R$ 229/consulta</div><div class="pkg-save">Economize R$ 119</div></div></td>
+              <td><div class="pkg-col"><div class="pkg-orig-row"><span class="pkg-orig">R$ 658</span><span class="pkg-disc">-20%</span></div><div class="pkg-price">R$ 529</div><div class="pkg-per">R$ 264/consulta</div><div class="pkg-save">Economize R$ 129</div></div></td>
+            </tr>
+            <tr>
+              <td class="td-lbl">3</td>
+              <td><span class="td-dash"></span></td>
+              <td style="background:rgba(250,250,249,.3)"><div class="pkg-col"><div class="pkg-orig-row"><span class="pkg-orig">R$ 867</span><span class="pkg-disc">-24%</span></div><div class="pkg-price">R$ 659</div><div class="pkg-per">R$ 219/consulta</div><div class="pkg-save">Economize R$ 208</div></div></td>
+              <td><div class="pkg-col"><div class="pkg-orig-row"><span class="pkg-orig">R$ 987</span><span class="pkg-disc">-24%</span></div><div class="pkg-price">R$ 749</div><div class="pkg-per">R$ 249/consulta</div><div class="pkg-save">Economize R$ 238</div></div></td>
+            </tr>
+            <tr>
+              <td class="td-lbl">4</td>
+              <td><span class="td-dash"></span></td>
+              <td style="background:rgba(250,250,249,.3)"><div class="pkg-col"><div class="pkg-orig-row"><span class="pkg-orig">R$ 1.156</span><span class="pkg-disc">-27%</span></div><div class="pkg-price">R$ 849</div><div class="pkg-per">R$ 212/consulta</div><div class="pkg-save">Economize R$ 307</div></div></td>
+              <td><div class="pkg-col"><div class="pkg-orig-row"><span class="pkg-orig">R$ 1.316</span><span class="pkg-disc">-26%</span></div><div class="pkg-price">R$ 979</div><div class="pkg-per">R$ 244/consulta</div><div class="pkg-save">Economize R$ 337</div></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="payment-row"><span class="payment-pill">Formas de Pagamento: Pix ou PicPay</span><span>Intervalos de consultas: até 45 dias</span></div>
+    </div>
   </div>
 </section>
 
@@ -1065,6 +1110,7 @@
       <div class="reveal" data-d="2" style="display:flex;justify-content:center">
         <div class="price-card">
           <p class="price-label">Adicional ao plano</p>
+          <div><span class="price-big">R$ 99</span><span class="price-per">/mês</span></div>
           <div class="price-div"></div>
           <p class="price-note">Adicione ao seu plano de nutrição e tenha treino e alimentação caminhando juntos.</p>
           <a href="https://wa.me/5527996381603?text=Ol%C3%A1%2C%20tenho%20interesse%20na%20Consultoria%20de%20Treino!" target="_blank" rel="noopener noreferrer" class="btn btn-accent">Adicionar ao Plano</a>
@@ -1091,14 +1137,15 @@
           </div>
           <div class="antro-feat">
             <div class="antro-feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4553A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-            <div><h4>Cashback Integral</h4><p style="color:#57534e;line-height:1.75;max-width:28rem;font-weight:300">Se decidir iniciar o acompanhamento, o valor da avaliação é <span style="color:#C4553A;font-weight:700">100% abatido</span> no plano escolhido.</p></div>
+            <div><h4>Cashback Integral</h4><p style="color:#57534e;line-height:1.75;max-width:28rem;font-weight:300">O valor de <strong style="color:#1c1917">R$ 120</strong> é pago no ato. Se decidir iniciar o acompanhamento, esse valor é <span style="color:#C4553A;font-weight:700">100% abatido</span> no plano escolhido.</p></div>
           </div>
         </div>
       </div>
       <div class="reveal" data-d="2" style="position:relative;display:flex;justify-content:center;align-items:center">
         <div style="position:absolute;top:0;right:0;width:16rem;height:16rem;background:#fff;border-radius:9999px;opacity:.35;filter:blur(80px)"></div>
         <div class="antro-card">
-          <span class="antro-card-label">Avaliação Avulsa</span>
+          <span class="antro-card-label">Investimento Único</span>
+          <div class="antro-card-price">R$ 120</div>
           <div class="antro-card-div"></div>
           <p class="antro-card-note">Sem compromisso de mensalidade.</p>
           <a href="https://wa.me/5527996381603?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20Avalia%C3%A7%C3%A3o%20Antropom%C3%A9trica!" target="_blank" rel="noopener noreferrer" class="btn btn-accent">Agendar Avaliação</a>
